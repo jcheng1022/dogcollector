@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 from .models import Dog
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def home(request):
     return render(request, 'home.html')
@@ -25,3 +25,11 @@ def dogs_details(request,dog_id):
 class DogCreate(CreateView):
     model=Dog
     fields='__all__'
+
+class DogUpdate(UpdateView):
+    model=Dog
+    fields=['breed','description', 'age']
+
+class DogDelete(DeleteView):
+    model=Dog
+    success_url= '/dogs/'
