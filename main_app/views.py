@@ -16,3 +16,7 @@ def about(request):
 def dogs_index(request):
     dogs = Dog.objects.all()
     return render(request,'dogs/index.html', {'dogs':dogs})
+
+def dogs_details(request,dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    return render(request, 'dogs/details.html', {'dog': dog})
