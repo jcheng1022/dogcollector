@@ -9,4 +9,8 @@ urlpatterns = [
     path('dogs/create/', views.DogCreate.as_view(), name='dogs_create'),
     path('dogs/<int:pk>/update', views.DogUpdate.as_view(), name='dogs_update'),
     path('dogs/<int:pk>/delete', views.DogDelete.as_view(), name='dogs_delete'),
+    path('dogs/<int:dog_id>/add_playing/', views.add_playing, name='add_playing'),
+    path('dogs/<int:dog_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'),
+    path('toys/', views.ToyList.as_view(), name='toy_index'),
+    path('toys/<int:pk>', views.ToyDetail.as_view(), name='toys_detail')
 ]

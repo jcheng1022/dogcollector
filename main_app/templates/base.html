@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <header class="navbar-fixed">
@@ -23,10 +24,14 @@
               <li><a href="{% url 'about' %}">About</a></li>
               <li> <a href="{% url 'index' %}"> Our Collection</a></li>
               <li> <a href="{% url 'dogs_create' %}"> Add a Dog</a></a></a></li>
+              <li> <a href="{% url 'toy_index' %}"> View All Toys</a></a></a></li>
             </ul>
           </div>
         </nav>
       </header>
-      {% block content%} {% endblock %}
+
+      
+      {% block content%} 
+      {% endblock %}
 </body>
 </html>
