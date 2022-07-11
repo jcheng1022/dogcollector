@@ -30,7 +30,11 @@ def dogs_details(request,dog_id):
 
 class DogCreate(CreateView):
     model=Dog
-    fields='__all__'
+    fields=['name', 'breed', 'description', 'age']
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class DogUpdate(UpdateView):
     model=Dog
@@ -38,7 +42,7 @@ class DogUpdate(UpdateView):
 
 class DogDelete(DeleteView):
     model=Dog
-    success_url= '/dogs/'
+
 
 
 def add_playing(request, dog_id):
@@ -54,6 +58,10 @@ def assoc_toy(request, dog_id, toy_id):
     Dog.objects.get(id=dog_id).toys.add(toy_id)
     return redirect('detail', dog_id = dog_id)
 
+def assoc_toy_del(request, dog_id, toy_id):
+    Dog.objects.get(id=dog_id).toys.remove(toy_id)
+    return redirect('detail', dog_id = dog_id)
+
 
 class ToyList(ListView):
     model = Toy
@@ -63,3 +71,15 @@ class ToyList(ListView):
 class ToyDetail(DetailView):
     model = Toy
     template_name = 'toys/detail.html'
+
+class ToyCreate(CreateView):
+    model = Toy
+    fields= ['name','color']
+
+class ToyUpdate(UpdateView):
+    model = Toy
+    fields = ['name', 'color']
+
+class ToyDelete(DeleteView):
+    model = Toy
+    success_url = '/toys/'

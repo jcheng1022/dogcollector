@@ -11,6 +11,10 @@ urlpatterns = [
     path('dogs/<int:pk>/delete', views.DogDelete.as_view(), name='dogs_delete'),
     path('dogs/<int:dog_id>/add_playing/', views.add_playing, name='add_playing'),
     path('dogs/<int:dog_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'),
+    path('dogs/<int:dog_id>/assoc_toy/<int:toy_id>/delete', views.assoc_toy_del, name='assoc_toy_del'),
     path('toys/', views.ToyList.as_view(), name='toy_index'),
-    path('toys/<int:pk>', views.ToyDetail.as_view(), name='toys_detail')
+    path('toys/<int:pk>', views.ToyDetail.as_view(), name='toys_detail'),
+    path('toys/create/', views.ToyCreate.as_view(), name='toys_create'),
+    path('toys/<int:pk>/update/', views.ToyUpdate.as_view(), name='toys_update'),
+    path('toys/<int:pk>/delete/', views.ToyDelete.as_view(), name='toys_delete'),
 ]
